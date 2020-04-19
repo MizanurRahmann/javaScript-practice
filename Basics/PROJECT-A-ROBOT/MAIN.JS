@@ -1,0 +1,47 @@
+const roads = [
+    "Alice's House-Bob's House",
+    "Alice's House-Post Office",
+    "Daria's House-Ernie's House",
+    "Ernie's House-Grete's House",
+    "Grete's House-Shop",
+    "Marketplace-Post Office",
+    "Marketplace-Town Hall",
+    "Alice's House-Cabin",
+    "Bob's House-Town Hall",
+    "Daria's House-Town Hall",
+    "Grete's House-Farm",
+    "Marketplace-Farm",
+    "Marketplace-Shop",
+    "Shop-Town Hall"
+];
+
+function buildGraph(edges){
+    let graph = Object.create(null);
+
+    function addEdges(from, to){
+        if(graph[from] == null){
+            graph[from] = [to];
+        } else{
+            graph[from].push(to);
+        }
+    }
+    for(let element of roads){
+        let [from, to] = element.split("-");
+        addEdges(from, to);
+        addEdges(to, from);
+    }
+    return graph;
+}
+
+const roadGraph = buildGraph(roads);
+
+class VillageState {
+    constructor(place, parcels) {
+    this.place = place;
+    }
+
+    move(destination){
+        
+    }
+}
+
